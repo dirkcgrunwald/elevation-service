@@ -55,7 +55,7 @@ class FileTileSet extends TileSet {
 
 class S3TileSet extends TileSet {
   async _getTile(lat, lng) {
-    // console.log(`${S3TileSet.baseUrl}/${this.getFilePath(lat, lng)}`);
+    console.log(`Fetch ${S3TileSet.baseUrl}/${this.getFilePath(lat, lng)}`);
     let buffer = await fetch(`${S3TileSet.baseUrl}/${this.getFilePath(lat, lng)}`).then(r => r.arrayBuffer());
     if (this.options.gzip) {
       buffer = Buffer.from(await promisify(gunzip)(buffer));
